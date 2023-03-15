@@ -44,9 +44,11 @@ const Blog:NextPage<props> = ({blog}) => {
       <Header/>
       <Back/>
       <div className={blogstyle.content}>
-        <h1>{blog.title}</h1>
-        <p>作成日: {blog.createdAt}</p>
-        <div dangerouslySetInnerHTML={{__html:`${blog.body}`}}></div>
+        <div style={{textAlign:"center"}}>
+          <h1>{blog.title}</h1>
+          <p>作成日: {blog.createdAt}</p>
+        </div>
+        <div  style={{boxShadow:"0px 0px 5px",}} dangerouslySetInnerHTML={{__html:`${blog.body}`}}></div>
       </div>
     </div>
   );

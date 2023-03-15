@@ -32,7 +32,7 @@ export default function Home({blog}:Props) {
       <h2 className={home.h2}>MENU</h2>
       <div className={home.li}>
           {blog.map((item,index)=>(
-             <div key={index} className={home.inlink}>
+            <div key={index} className={home.inlink}>
               <Link href={`/blog/${item.id}`}>
                 <h2 className={home.title}>{item.title}</h2>
                 <p className={home.detail}>{item.detail}</p>
@@ -41,7 +41,6 @@ export default function Home({blog}:Props) {
               </Link>
             </div>
           ))}
-        
       </div>
       
       </div>
