@@ -6,6 +6,9 @@ import Header from "../../components/Header";
 import { blogdata } from "../../data/blogdata";
 import { client } from "../../libs/client";
 import blogstyle from "../../styles/blogpage.css";
+import hljs from 'highlight.js/lib/core';
+import 'highlight.js/styles/vs2015.css';
+import { useEffect } from "react";
 type props={
   blog:blogdata
 }
@@ -35,6 +38,12 @@ export const getStaticProps:GetStaticProps<props,Params>=async(context)=>{
 
 
 const Blog:NextPage<props> = ({blog}) => {
+  const dataleng:number=blog.body.length;
+  useEffect(()=>{
+    console.log(dataleng);
+    hljs.highlightAll();
+  },[])
+  
   return (
     <div>
       <Head>
@@ -48,7 +57,15 @@ const Blog:NextPage<props> = ({blog}) => {
           <h1>{blog.title}</h1>
           <p>作成日: {blog.createdAt}</p>
         </div>
-        <div  style={{boxShadow:"0px 0px 5px",}} dangerouslySetInnerHTML={{__html:`${blog.body}`}}></div>
+        <div style={{boxShadow:"0px 0px 5px",}}>
+        
+          {[...Array(dataleng)].map((_,index:number)=>(
+            <div key={index} style={{margin:"10px"}}>
+              <div dangerouslySetInnerHTML={{__html:`${blog.body[index].body}`}}></div>
+              <pre><code className={blog.langage[index].langage}>{blog.code[index].code}</code></pre>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

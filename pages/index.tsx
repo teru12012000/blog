@@ -35,9 +35,6 @@ export default function Home({blog}:Props) {
             <div key={index} className={home.inlink}>
               <Link href={`/blog/${item.id}`}>
                 <h2 className={home.title}>{item.title}</h2>
-                <p className={home.detail}>{item.detail}</p>
-                <p>作成日:{item.createdAt}</p>
-                <p>更新日:{item.updatedAt}</p>
               </Link>
             </div>
           ))}
