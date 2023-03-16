@@ -48,7 +48,7 @@ const Blog:NextPage<props> = ({blog}) => {
     <div>
       <Head>
         <title>{blog.title}</title>
-        <meta name="description" content={blog.detail} />
+        <meta name="description" content={`${blog.title}についてです`} />
       </Head>
       <Header/>
       <Back/>
