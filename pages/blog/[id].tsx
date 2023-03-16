@@ -7,8 +7,10 @@ import { blogdata } from "../../data/blogdata";
 import { client } from "../../libs/client";
 import blogstyle from "../../styles/blogpage.css";
 import hljs from 'highlight.js/lib/core';
-import 'highlight.js/styles/vs2015.css';
+import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { irBlack } from "react-syntax-highlighter/dist/esm/styles/hljs";
 type props={
   blog:blogdata
 }
@@ -22,7 +24,6 @@ export const getStaticPaths:GetStaticPaths<Params>=async()=>{
   }
 }
 export const getStaticProps:GetStaticProps<props,Params>=async(context)=>{
-  
   const id=context.params?.id;
   const data=await client.get({
     endpoint:"blog",
@@ -33,9 +34,7 @@ export const getStaticProps:GetStaticProps<props,Params>=async(context)=>{
       blog:data,
     }
   }
-   
 }
-
 
 const Blog:NextPage<props> = ({blog}) => {
   const dataleng:number=blog.body.length;
@@ -62,7 +61,11 @@ const Blog:NextPage<props> = ({blog}) => {
           {[...Array(dataleng)].map((_,index:number)=>(
             <div key={index} style={{margin:"10px"}}>
               <div dangerouslySetInnerHTML={{__html:`${blog.body[index].body}`}}></div>
-              {blog.langage[index]?( <pre style={{width:"30%"}}><code className={blog.langage[index]?.langage}>{blog.code[index]?.code}</code></pre>):null}
+              {blog.langage[index]?( <pre style={{width:"30%"}}>
+                <SyntaxHighlighter language={blog.langage[index].langage[0]} style={irBlack}>
+                  {blog.code[index].code}
+                </SyntaxHighlighter>
+              </pre>):null}
             </div>
           ))}
         </div>
