@@ -10,7 +10,8 @@ import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { irBlack } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { irBlack } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
 type props={
   blog:blogdata
 }
