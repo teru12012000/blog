@@ -62,7 +62,7 @@ const Blog:NextPage<props> = ({blog}) => {
           {[...Array(dataleng)].map((_,index:number)=>(
             <div key={index} style={{margin:"10px"}}>
               <div dangerouslySetInnerHTML={{__html:`${blog.body[index].body}`}}></div>
-              {blog.langage[index]?( <pre style={{width:"30%"}}>
+              {blog.langage[index]?( <pre style={{width:"80%"}}>
                 <SyntaxHighlighter language={blog.langage[index].langage[0]} style={irBlack}>
                   {blog.code[index].code}
                 </SyntaxHighlighter>
