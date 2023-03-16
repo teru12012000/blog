@@ -8,7 +8,7 @@ export type codetype={
 }
 export type languagetype={
   fieldId:string;
-  langage:string;
+  langage:string[];
 }
 export type blogdata={
   id:string;
