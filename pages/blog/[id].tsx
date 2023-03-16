@@ -62,7 +62,7 @@ const Blog:NextPage<props> = ({blog}) => {
           {[...Array(dataleng)].map((_,index:number)=>(
             <div key={index} style={{margin:"10px"}}>
               <div dangerouslySetInnerHTML={{__html:`${blog.body[index].body}`}}></div>
-              <pre><code className={blog.langage[index].langage}>{blog.code[index].code}</code></pre>
+              <pre style={{width:"30%"}}><code className={blog.langage[index].langage}>{blog.code[index].code}</code></pre>
             </div>
           ))}
         </div>
