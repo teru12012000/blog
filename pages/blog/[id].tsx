@@ -10,7 +10,6 @@ import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { irBlack } from "react-syntax-highlighter/dist/esm/styles/hljs";
 type props={
   blog:blogdata
 }
@@ -62,7 +61,7 @@ const Blog:NextPage<props> = ({blog}) => {
             <div key={index} style={{margin:"10px"}}>
               <div dangerouslySetInnerHTML={{__html:`${blog.body[index].body}`}}></div>
               {blog.langage[index]?( <pre style={{width:"30%"}}>
-                <SyntaxHighlighter language={blog.langage[index].langage[0]} style={irBlack}>
+                <SyntaxHighlighter language={blog.langage[index].langage[0]}>
                   {blog.code[index].code}
                 </SyntaxHighlighter>
               </pre>):null}
