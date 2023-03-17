@@ -32,8 +32,8 @@ export default function Home({blog}:Props) {
       <h2 className={home.h2}>MENU</h2>
       <div className={home.li}>
           {blog.map((item,index)=>(
-            <div key={index} className={home.inlink}>
-              <Link href={`/blog/${item.id}`}>
+            <div key={index} >
+              <Link href={`/blog/${item.id}`} className={home.inlink}>
                 <h2 className={home.title}>{item.title}</h2>
               </Link>
             </div>
