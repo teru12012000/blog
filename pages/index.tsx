@@ -7,20 +7,8 @@ import { blogdata } from '../data/blogdata'
 import { client } from '../libs/client'
 import Header from '../components/Header'
 import home from '../styles/index.css'
-//SSG
-export const getStaticProps:GetStaticProps=async()=>{
-  const data= await client.get({endpoint: 'blog'});
-  return{
-    props:{
-      blog:data.contents,
-    }
-  }
-}
-type Props={
-  blog:blogdata[]
-}
-
-export default function Home({blog}:Props) {
+import { kindPage } from '../data/kind'
+export default function Home() {
   return (
     <div>
       <Head>
@@ -29,12 +17,15 @@ export default function Home({blog}:Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <h2 className={home.h2}>MENU</h2>
+      <p>
+        勉強したものを載せていきます。<br/>
+        主に実技的なものを載せていきます。
+      </p>
       <div className={home.li}>
-          {blog.map((item,index)=>(
+          {kindPage.map((item,index)=>(
             <div key={index} >
-              <Link href={`/blog/${item.id}`} className={home.inlink}>
-                <h2 className={home.title}>{item.title}</h2>
+              <Link href={`/kind/${item.kind[0]}`} className={home.inlink}>
+                <h2 className={home.title}>{item.name}</h2>
               </Link>
             </div>
           ))}

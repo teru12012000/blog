@@ -20,5 +20,7 @@ export type blogdata={
   body:bodytype[];
   detail:string;
   code:codetype[];
-  langage:languagetype[]
+  langage:languagetype[],
+  kind:string[],
+  kind2:string[],
 }

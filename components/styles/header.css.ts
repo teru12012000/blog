@@ -7,12 +7,20 @@ const head={
     color:"white",
     padding:"5px",
     '@media':{
-      'screen and (min-width:540px)':{
+      'screen and (min-width:890px)':{
         display:"flex",
         justifyContent:"space-between",
       }
     }
   }),
+  titletxt:style({
+    fontSize:30,
+    '@media':{
+      'screen and (max-width:351px)':{
+        fontSize:20,
+      }
+    }
+  })
 
 } 
 
