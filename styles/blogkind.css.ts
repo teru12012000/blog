@@ -1,5 +1,6 @@
-import {style} from "@vanilla-extract/css";
-const home={
+import { style } from "@vanilla-extract/css";
+
+const styleKingPage={
   aboutPage:style({
     fontWeight:"bold",
     fontSize:20,
@@ -26,4 +27,5 @@ const home={
   }),
 }
 
-export default home;
+export default styleKingPage;
+

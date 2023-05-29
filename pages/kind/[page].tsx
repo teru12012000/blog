@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { kindPage, kindType } from "../../data/kind";
 import Header from "../../components/Header";
+import styleKingPage from "../../styles/blogkind.css";
+import Back from "../../components/Back";
 export const getStaticPaths:GetStaticPaths<Params>=async()=>{
   const paths=kindPage.map((content:kindType)=>(`/kind/${content.kind}`));
   return {
@@ -30,6 +32,11 @@ type Props={
 const PageList:NextPage<Props> = ({blog}) => {
   const {page}=useRouter().query;
   const pageData:blogdata[]=blog.filter((item:blogdata)=>item.kind2[0]===page);
+  pageData.sort((x,y)=>{
+    const dateA=new Date(x.createdAt);
+    const dateB=new Date(y.createdAt);
+    return dateA>dateB?1:-1;
+  })
   return (
     <>
       <Head>
@@ -37,19 +44,24 @@ const PageList:NextPage<Props> = ({blog}) => {
         <meta name="description" content={`${page as string}のページです。`} />
       </Head>
       <Header/>
+      <Back 
+        link='/'
+      />
       <main>
-        <h2>{pageData[0].kind[0] as string}</h2>
-        <ol>
-          {pageData.map((item:blogdata,index:number)=>(
-            <li key={index}>
-              <Link href={`/blog/${item.id}`}>
-                <Button variant="text">
-                  {item.title}
-                </Button>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <h2 className={styleKingPage.aboutPage}>{pageData[0].kind[0] as string}</h2>
+        <div className={styleKingPage.containar}>
+          <ol className={styleKingPage.numberlist}>
+            {pageData.map((item:blogdata,index:number)=>(
+              <li key={index}>
+                <Link href={`/blog/${item.id}`}>
+                  <Button variant="text" sx={{fontSize:15,textAlign:"left"}}>
+                    {item.title}
+                  </Button>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
       </main>
     </>
   );

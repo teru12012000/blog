@@ -1,12 +1,19 @@
 import Link from 'next/link';
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 import OtherHousesRoundedIcon from '@mui/icons-material/OtherHousesRounded';
 import backstyle from './styles/back.css';
-const Back = () => {
+import { FC } from 'react';
+import { IconButton } from '@mui/material';
+type Props={
+  link:string;
+}
+const Back:FC<Props> = ({link}) => {
   return (
     <div className={backstyle.content}>
-        <Link href="/">
-          <OtherHousesRoundedIcon className={backstyle.icon}/>
-          <p className={backstyle.p}>TOP</p>   
+        <Link href={link}>
+          <IconButton>
+            <KeyboardBackspaceRoundedIcon sx={{fontSize:30,color:"black"}}/>
+          </IconButton>
         </Link>
     </div>
   );

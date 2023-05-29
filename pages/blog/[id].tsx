@@ -51,7 +51,9 @@ const Blog:NextPage<props> = ({blog}) => {
         <meta name="description" content={`${blog.title}についてです`} />
       </Head>
       <Header/>
-      <Back/>
+      <Back
+        link={`/kind/${blog.kind2[0]}`}
+      />
       <div className={blogstyle.content}>
         <div style={{textAlign:"center"}}>
           <h1>{blog.title}</h1>
